@@ -24,5 +24,6 @@ app.register_blueprint(reports_bp, url_prefix="/api")
 def home():
     return {"message": "Medical Store Backend Running"}
 
+import os
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
