@@ -1,0 +1,94 @@
+-- WARNING: This schema is for context only and is not meant to be run.
+-- Table order and constraints may not be valid for execution.
+
+CREATE TABLE public.categories (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  category_name text NOT NULL,
+  CONSTRAINT categories_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.customers (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  customer_name text,
+  phone text,
+  CONSTRAINT customers_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.expiry_alerts (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  product_id uuid,
+  expiry_date date,
+  status text DEFAULT 'active'::text,
+  CONSTRAINT expiry_alerts_pkey PRIMARY KEY (id),
+  CONSTRAINT expiry_alerts_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.products(id)
+);
+CREATE TABLE public.payments (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  sale_id uuid,
+  payment_method text,
+  payment_status text,
+  payment_date timestamp without time zone DEFAULT now(),
+  CONSTRAINT payments_pkey PRIMARY KEY (id),
+  CONSTRAINT payments_sale_id_fkey FOREIGN KEY (sale_id) REFERENCES public.sales(id)
+);
+CREATE TABLE public.products (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  product_name text NOT NULL,
+  category_id uuid,
+  supplier_id uuid,
+  purchase_price numeric,
+  selling_price numeric,
+  quantity integer DEFAULT 0,
+  min_stock integer DEFAULT 10,
+  expiry_date date,
+  created_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT products_pkey PRIMARY KEY (id),
+  CONSTRAINT products_category_id_fkey FOREIGN KEY (category_id) REFERENCES public.categories(id),
+  CONSTRAINT products_supplier_id_fkey FOREIGN KEY (supplier_id) REFERENCES public.suppliers(id)
+);
+CREATE TABLE public.purchases (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  product_id uuid,
+  supplier_id uuid,
+  quantity integer,
+  total_amount numeric,
+  purchase_date timestamp without time zone DEFAULT now(),
+  date timestamp without time zone DEFAULT now(),
+  CONSTRAINT purchases_pkey PRIMARY KEY (id),
+  CONSTRAINT purchases_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.products(id),
+  CONSTRAINT purchases_supplier_id_fkey FOREIGN KEY (supplier_id) REFERENCES public.suppliers(id)
+);
+CREATE TABLE public.sales (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  product_id uuid,
+  customer_id uuid,
+  quantity integer,
+  total_amount numeric,
+  sale_date timestamp without time zone DEFAULT now(),
+  date timestamp without time zone DEFAULT now(),
+  CONSTRAINT sales_pkey PRIMARY KEY (id),
+  CONSTRAINT sales_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.products(id),
+  CONSTRAINT sales_customer_id_fkey FOREIGN KEY (customer_id) REFERENCES public.customers(id)
+);
+CREATE TABLE public.stock_alerts (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  product_id uuid,
+  alert_message text,
+  alert_date timestamp without time zone DEFAULT now(),
+  CONSTRAINT stock_alerts_pkey PRIMARY KEY (id),
+  CONSTRAINT stock_alerts_product_id_fkey FOREIGN KEY (product_id) REFERENCES public.products(id)
+);
+CREATE TABLE public.suppliers (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  supplier_name text NOT NULL,
+  phone text,
+  email text,
+  CONSTRAINT suppliers_pkey PRIMARY KEY (id)
+);
+CREATE TABLE public.users (
+  id uuid NOT NULL DEFAULT uuid_generate_v4(),
+  name text NOT NULL,
+  email text NOT NULL UNIQUE,
+  password text NOT NULL,
+  role text NOT NULL,
+  created_at timestamp without time zone DEFAULT now(),
+  CONSTRAINT users_pkey PRIMARY KEY (id)
+);

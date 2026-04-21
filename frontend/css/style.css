@@ -1,0 +1,104 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* Forms */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #3b82f6;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2563eb;
+}
+
+/* Tables (Basic) */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+/* ================= LOGIN PAGE DESIGN ================= */
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+/* Login container */
+.center-box {
+    background: #ffffff;
+    width: 380px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+.center-box h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+/* Improve inputs only inside login */
+.center-box input {
+    margin-bottom: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    transition: 0.3s;
+}
+
+.center-box input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+/* Improve login button only */
+.center-box button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.center-box button:hover {
+    transform: translateY(-2px);
+}
+/* Login Logo */
+.login-logo {
+    width: 80px;
+    margin-bottom: 20px;
+}

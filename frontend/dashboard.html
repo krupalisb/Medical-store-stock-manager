@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical Store Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="sidebar-logo">
+    <img src="assets/logo.png" alt="Logo">
+    <span>Medical Store</span>
+</div>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="products.html">Product Inventory</a>
+    <a href="suppliers.html">Supplier Management</a>
+    <a href="purchases.html">Purchase Orders</a>
+    <a href="sales.html">Sales Orders</a>
+</div>
+
+<div class="main">
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+        <div class="card blue">
+            <h3>Total Products</h3>
+            <h2 id="totalProducts">0</h2>
+        </div>
+        <div class="card orange">
+            <h3>Low Stock</h3>
+            <h2 id="lowStock">0</h2>
+        </div>
+        <div class="card red">
+            <h3>Expired Items</h3>
+            <h2 id="expiredItems">0</h2>
+        </div>
+        <div class="card green">
+            <h3>Total Value</h3>
+            <h2 id="totalValue">₹ 0</h2>
+        </div>
+    </div>
+
+    <div class="charts">
+        <div class="chart-box">
+            <h3>Stock Status</h3>
+            <canvas id="stockChart"></canvas>
+        </div>
+        <div class="chart-box">
+            <h3>Inventory Value</h3>
+            <canvas id="valueChart"></canvas>
+        </div>
+    </div>
+
+    <div class="charts">
+        <div class="table-box">
+            <h3>Recent Purchases</h3>
+            <table id="purchaseTable"></table>
+        </div>
+
+        <div class="table-box">
+            <h3>Top Selling Products</h3>
+            <table id="topSellingTable"></table>
+        </div>
+    </div>
+
+    <div class="charts">
+        <div class="alert-box">
+            <h3>Stock Alerts</h3>
+            <div id="stockAlerts"></div>
+        </div>
+
+        <div class="alert-box">
+            <h3>Expiry Alerts</h3>
+            <div id="expiryAlerts"></div>
+        </div>
+    </div>
+</div>
+
+<script src="js/dashboard.js"></script>
+</body>
+</html>

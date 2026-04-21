@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Suppliers</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Medical Store</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="products.html">Product Inventory</a>
+    <a href="suppliers.html" class="active">Supplier Management</a>
+    <a href="purchases.html">Purchase Orders</a>
+    <a href="sales.html">Sales Orders</a>
+</div>
+
+<div class="main">
+    <h1>Supplier Management</h1>
+
+    <div class="card-section">
+        <h3>Add Supplier</h3>
+
+        <div class="form-grid">
+            <input type="text" id="supplierName" placeholder="Supplier Name">
+            <input type="text" id="contact" placeholder="Contact Number">
+            <input type="text" id="email" placeholder="Email">
+            <button onclick="addSupplier()">Add</button>
+        </div>
+    </div>
+
+    <div class="table-section">
+
+    <div class="table-header">
+        <h3>All Suppliers</h3>
+
+        <div class="table-controls">
+            <input 
+                type="text" 
+                id="supplierSearch" 
+                placeholder="Search supplier..."
+                onkeyup="filterSuppliers()"
+            >
+        </div>
+    </div>
+
+    <table id="supplierTable"></table>
+
+</div>
+</div>
+
+<script src="js/supplier.js"></script>
+</body>
+</html>

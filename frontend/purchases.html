@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Purchase Orders</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Medical Store</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="products.html">Product Inventory</a>
+    <a href="suppliers.html">Supplier Management</a>
+    <a href="purchases.html" class="active">Purchase Orders</a>
+    <a href="sales.html">Sales Orders</a>
+</div>
+
+<div class="main">
+    <h1>Purchase Orders</h1>
+
+    <div class="card-section">
+        <h3>Add New Purchase</h3>
+
+        <div class="form-grid">
+            <input type="text" id="productId" placeholder="Product ID">
+            <input type="number" id="quantity" placeholder="Quantity">
+            <input type="number" id="totalAmount" placeholder="Total Amount">
+            <button onclick="createPurchase()">Purchase</button>
+        </div>
+    </div>
+
+    <div class="table-section">
+
+    <div class="table-header">
+        <h3>Purchase History</h3>
+
+        <div class="table-controls">
+            <input 
+                type="text" 
+                id="purchaseSearch" 
+                placeholder="Search product..."
+                onkeyup="filterPurchases()"
+            >
+        </div>
+    </div>
+
+    <table id="purchaseTable"></table>
+
+</div>
+
+</div>
+
+<script src="js/purchase.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sales Orders</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Medical Store</h2>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="products.html">Product Inventory</a>
+    <a href="suppliers.html">Supplier Management</a>
+    <a href="purchases.html">Purchase Orders</a>
+    <a href="sales.html" class="active">Sales Orders</a>
+</div>
+
+<div class="main">
+    <h1>Sales Orders</h1>
+
+    <div class="card-section">
+        <h3>Create Sale</h3>
+
+        <div class="form-grid">
+            <input type="text" id="productId" placeholder="Product ID">
+            <input type="number" id="quantity" placeholder="Quantity">
+            <input type="number" id="totalAmount" placeholder="Total Amount">
+            <button onclick="createSale()">Sell</button>
+        </div>
+    </div>
+
+    <div class="table-section">
+
+    <div class="table-header">
+        <h3>Sales History</h3>
+
+        <div class="table-controls">
+            <input 
+                type="text" 
+                id="salesSearch" 
+                placeholder="Search product..."
+                onkeyup="filterSales()"
+            >
+        </div>
+    </div>
+
+    <table id="salesTable"></table>
+
+</div>
+
+</div>
+
+<script src="js/sale.js"></script>
+</body>
+</html>
